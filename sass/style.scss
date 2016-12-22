@@ -1,0 +1,22 @@
+﻿@import "variables";
+@import "firstSection";
+@import "infoSection";
+@import "navigation";
+@import "content";
+@import "leftcaption";
+
+body {
+    font-family: $font_family;
+    margin: 0;
+    background-color: #000000;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+.marker{
+    float: right;
+    width: 100%;
+}

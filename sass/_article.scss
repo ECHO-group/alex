@@ -1,0 +1,36 @@
+﻿.article {
+    .photo {
+        float: left;
+
+        img {
+            margin-top: 12px;
+            height: 300px;
+        }
+    }
+
+    .about-me {
+        margin-left: 231px;
+
+        h1 {
+            color: #000;
+            font-size: 18px;
+            background-color: #fff;
+            line-height: 26px;
+            text-align: left;
+            padding: 0;
+            margin: 0;
+        }
+
+        h4 {
+            color: #c5c3c3;
+            text-transform: uppercase;
+        }
+
+        p {
+            width: 90%;
+            font-size: 13px;
+            text-indent: 1.5em;
+            text-align: justify;
+        }
+    }
+}

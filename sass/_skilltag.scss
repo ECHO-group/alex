@@ -1,0 +1,42 @@
+﻿ .skill-tag {
+        float: left;
+        margin: 5px 13px;
+        border: 1px solid #ccc;
+        line-height: 32px;
+        font-size: 11px;
+
+        span {
+            display: inline-block;
+            height: 32px;
+            padding: 0 5px 0 10px;
+        }
+
+        .tag-expert {
+            display: inline-block;
+            height: 32px;
+            padding: 0 8px;
+            background-color: firebrick;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .tag-advanced {
+            display: inline-block;
+            height: 32px;
+            padding: 0 8px;
+            background-color: darkorange;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .tag-has-exp {
+            display: inline-block;
+            height: 32px;
+            padding: 0 8px;
+            background-color: forestgreen;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+    }
+
+
