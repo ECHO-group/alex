@@ -1599,7 +1599,7 @@ h1 {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      padding: 20px 0 60px 0;
+      padding: 20px 0 5px 0;
       width: 100%; }
       footer .contacts .contact-section {
         width: 35%;
@@ -1608,7 +1608,7 @@ h1 {
         footer .contacts .contact-section h2 {
           margin: 0;
           text-align: center;
-          color: #FFC815; }
+          color: #e9cb31; }
         footer .contacts .contact-section .social {
           display: flex;
           flex-direction: row;
@@ -1616,25 +1616,15 @@ h1 {
           padding: 20px 0 60px 0;
           text-align: center; }
           footer .contacts .contact-section .social a {
-            font-weight: 900;
-            color: #272933;
-            text-decoration: none;
-            display: inline-block;
             width: 40px;
             height: 40px;
-            text-align: center;
-            margin: auto;
-            background-color: #e9cb31;
-            line-height: 35px;
-            font-size: 24px;
-            border-radius: 30px;
+            display: block;
+            background-size: 100%;
+            background-size: 100%;
+            margin: 0 auto;
             transition: 0.3s; }
             footer .contacts .contact-section .social a:hover {
-              color: #e9cb31;
-              border: 1px solid #e9cb31;
-              transition: 0.3s;
-              background: #272933;
-              box-sizing: border-box; }
+              transition: 0.3s; }
         footer .contacts .contact-section li {
           display: block;
           margin: 5px; } }
@@ -1644,7 +1634,7 @@ h1 {
     float: right;
     background-color: #272933; }
     footer .contacts {
-      padding: 20px 0 60px 0;
+      padding: 20px 0 5px 0;
       width: 100%; }
       footer .contacts .contact-section {
         width: 60%;
@@ -1662,29 +1652,39 @@ h1 {
           padding: 20px 0 60px 0;
           text-align: center; }
           footer .contacts .contact-section .social a {
-            color: #272933;
-            font-weight: 900;
-            text-decoration: none;
-            display: inline-block;
             width: 40px;
             height: 40px;
-            text-align: center;
-            margin: auto;
-            background-color: #e9cb31;
-            line-height: 35px;
-            font-size: 24px;
-            border-radius: 30px;
+            display: block;
+            background-size: 100%;
+            background-size: 100%;
+            margin: 0 auto;
             transition: 0.3s; }
             footer .contacts .contact-section .social a:hover {
-              color: #e9cb31;
-              border: 1px solid #e9cb31;
-              transition: 0.3s;
-              background: #272933;
-              box-sizing: border-box; }
+              transition: 0.3s; }
         footer .contacts .contact-section li {
           display: block;
           margin: 5px;
           word-break: break-word; } }
+.facebook {
+  background-image: url(../img/ff.png); }
+  .facebook:hover {
+    background-image: url(../img/f.png); }
+
+.vk {
+  background-image: url(../img/vf.png); }
+  .vk:hover {
+    background-image: url(../img/v.png); }
+
+.linkedin {
+  background-image: url(../img/lf.png); }
+  .linkedin:hover {
+    background-image: url(../img/l.png); }
+
+.gmail {
+  background-image: url(../img/gf.png); }
+  .gmail:hover {
+    background-image: url(../img/g.png); }
+
 body {
   font-family: "Open Sans", monospace;
   margin: 0;
@@ -1697,5 +1697,39 @@ body {
 .marker {
   float: right;
   width: 100%; }
+
+.copyright {
+  color: #d9d9c2;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  display: table;
+  margin: auto; }
+  .copyright:before {
+    width: 5%;
+    height: 100%;
+    border-left: 2px solid #d9d9c2;
+    border-top: 2px solid #d9d9c2;
+    border-bottom: 2px solid #d9d9c2;
+    position: absolute;
+    bottom: -3px;
+    left: -19px;
+    content: ""; }
+  .copyright:after {
+    width: 5%;
+    height: 100%;
+    border-right: 2px solid #d9d9c2;
+    border-top: 2px solid #d9d9c2;
+    border-bottom: 2px solid #d9d9c2;
+    position: absolute;
+    bottom: -3px;
+    right: -19px;
+    content: ""; }
+
+.copyright-additional {
+  font-size: 12px;
+  color: #d9d9c2;
+  text-align: center;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */
