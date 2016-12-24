@@ -97,12 +97,24 @@
         </div>
 
     </div>
-    <div class="content-cover">
-    </div>
+
     <div class="image-info" id="image-info">
 
     </div>
     <div class="info-section">
+        <div class="navigation">
+            <div class="logo">
+                <h1>Aliaksandr Stukachou</h1>
+            </div>
+            <div class="nav-tems">
+                <li data-text="top" id="go-top">Start</li>
+                <li class="selected" data-text="about me">About me</li>
+                <li data-text="MY SKILLS">My skills</li>
+                <li data-text="PAST PROJECT">Past project</li>
+                <li data-text="bottom">Contact</li>
+            </div>
+            <div class="clearfix"></div>
+        </div>
         <div class="content-side">
             <div class="marker" data-marker="200" data-text="about me" data-bg="url(img/about-me.jpg)"></div>
             <h1>WHO I AM <ol>ABOUT ME</ol></h1>
@@ -156,7 +168,7 @@
         </div>
         <div class="content-side">
             <div class="marker" data-marker="200" data-text="MY SKILLS" data-bg="url(img/skills.jpg)"></div>
-            <h1>SKILLS <ol>MY SKILLS</ol></h1> 
+            <h1>SKILLS <ol>MY SKILLS</ol></h1>
             <div class="content">
                 <h3>Languages</h3>
                 <div class="languages">
@@ -440,10 +452,68 @@
             }
             previouseScrollPosition = $('.first-section')[0].getBoundingClientRect().top;
             $(window).scrollTop(1);
+
+            $('.nav-tems').on('click', 'li', function (e) {
+                var navItems = $('.nav-tems li');
+                var useClass = true;
+
+                if ($(e.target).attr('data-text') == $(navItems[0]).attr('data-text') || $(e.target).attr('data-text') == $(navItems[navItems.length - 1]).attr('data-text')) {
+                    useClass = false;
+                }
+
+                for (var i = 0; i < navItems.length; i++) {
+
+                    $(navItems[i]).removeClass('selected');
+                }
+                if (useClass) {
+                    $(e.target).addClass('selected');
+                }
+
+                var height = scrollToElement($(e.target).attr('data-text'));
+
+                $('body,html').animate({ scrollTop: height }, 1500);
+
+            });
+
+            function scrollToElement(tag) {
+                if (tag == 'top') {
+                    $($('.nav-tems li')[1]).addClass('selected');
+                    return 0;
+                }
+                if (tag == 'bottom') {
+                    $($('.nav-tems li')[$('.nav-tems li').length - 2]).addClass('selected');
+                    return $(document).height() - $(window).height();
+                }
+                var allMarkers = $('.marker');
+                for (var i = 0; i < allMarkers.length; i++) {
+                    if ($(allMarkers[i]).attr('data-text') == tag) {
+                        return $(allMarkers[i]).offset().top - $('.navigation').height();
+                    }
+                }
+            }
+
         });
 
 
         $(window).scroll(function () {
+
+            var value = $('.marker')[0].getBoundingClientRect().top - -$('.navigation').height();
+            if (value < 0) {
+                $('.navigation').css({
+                    position: "fixed",
+                    width: "100%",
+                    "z-index": "10000",
+                    "transition": "0.3s",
+                    top: 0
+                });
+            } else {
+                $('.navigation').css({
+                    position: "relative",
+                    "transition": "0.3s",
+                    top: 0
+                });
+            }
+
             var allMarkers = $('.marker');
             for (var i = 0; i < allMarkers.length - 1; i++) {
                 var currentDistance = allMarkers[i].getBoundingClientRect().top;
@@ -460,6 +530,16 @@
                 if (windowFillingCurrentBlock < 0) {
                     if (i == allMarkers.length - 2) {
                         if ($('#header-left').text().toLowerCase() != $(allMarkers[i + 1]).attr('data-text').toLowerCase()) {
+
+                            var allNavItems = $('.navigation li');
+                            for (var j = 0; j < allNavItems.length; j++) {
+                                if ($(allNavItems[j]).attr('data-text') == $(allMarkers[i + 1]).attr('data-text')) {
+                                    $(allNavItems[j]).addClass('selected');
+                                } else {
+                                    $(allNavItems[j]).removeClass('selected');
+                                }
+                            }
+
                             $('#image-info').animate({ 'opacity': '0' }, 300, function () {
                                 $('#image-info').css({
                                     background: $(allMarkers[i + 1]).attr('data-bg')
@@ -474,6 +554,16 @@
                 }
                 if (windowFillingNextBlock < 0 && windowFillingCurrentBlock > 0) {
                     if ($('#header-left').text().toLowerCase() != $(allMarkers[i]).attr('data-text').toLowerCase()) {
+
+                        var allNavItems = $('.navigation li');
+                        for (var j = 0; j < allNavItems.length; j++) {
+                            if ($(allNavItems[j]).attr('data-text') == $(allMarkers[i]).attr('data-text')) {
+                                $(allNavItems[j]).addClass('selected');
+                            } else {
+                                $(allNavItems[j]).removeClass('selected');
+                            }
+                        }
+
                         $('#image-info').animate({ 'opacity': '0' }, 300, function () {
                             $('#image-info').css({
                                 background: $(allMarkers[i]).attr('data-bg')
@@ -488,6 +578,15 @@
                 if ((windowFillingNextBlock / $(window).height() > 0.4 && toBottom) || (!toBottom && windowFillingNextBlock / $(window).height() > 0.6)) {
 
                     if ($('#header-left').text().toLowerCase() != $(allMarkers[i + 1]).attr('data-text').toLowerCase()) {
+
+                        var allNavItems = $('.navigation li');
+                        for (var j = 0; j < allNavItems.length; j++) {
+                            if ($(allNavItems[j]).attr('data-text') == $(allMarkers[i + 1]).attr('data-text')) {
+                                $(allNavItems[j]).addClass('selected');
+                            } else {
+                                $(allNavItems[j]).removeClass('selected');
+                            }
+                        }
                         $('#image-info').animate({ 'opacity': '0' }, 300, function () {
                             $('#image-info').css({
                                 background: $(allMarkers[i + 1]).attr('data-bg')
@@ -502,6 +601,16 @@
                     break;
                 } else {
                     if ($('#header-left').text().toLowerCase() != $(allMarkers[i]).attr('data-text').toLowerCase()) {
+
+                        var allNavItems = $('.navigation li');
+                        for (var j = 0; j < allNavItems.length; j++) {
+                            if ($(allNavItems[j]).attr('data-text') == $(allMarkers[i]).attr('data-text')) {
+                                $(allNavItems[j]).addClass('selected');
+                            } else {
+                                $(allNavItems[j]).removeClass('selected');
+                            }
+                        }
+
                         $('#image-info').animate({ 'opacity': '0' }, 300, function () {
                             $('#image-info').css({
                                 background: $(allMarkers[i]).attr('data-bg')
