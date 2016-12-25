@@ -62,7 +62,6 @@
                 </div>
                 <div class="first-section--content-statistic">
                     <div class="first-section--content-statistic-container">
-                        &nbsp;<br />
                         <div class="first-section--content-statistic-item">
                             <span>2</span><strong>Startups</strong><div class="corner corner-left corner-top"></div>
                             <div class="corner corner-right corner-bottom"></div>
@@ -443,7 +442,9 @@
     </div>
 
     <script>
-        var previouseScrollPosition
+        var previouseScrollPosition = -1
+        var toBottom
+        var isExecuted = false;
         $('document').ready(function () {
             var trigger = $('#hamburger'),
                 isClosed = false;
@@ -494,9 +495,9 @@
                     $(e.target).addClass('selected');
                 }
 
-                var height = scrollToElement($(e.target).attr('data-text'), 0);
+                var height = scrollToElement($(e.target).attr('data-text'), $('.nav-tems').height());
 
-                $('body,html').animate({ scrollTop: height }, 1500);
+                $('body,html').animate({ scrollTop: height }, 500);
 
             });
 
@@ -514,9 +515,31 @@
                 for (var i = 0; i < allMarkers.length; i++) {
                     if ($(allMarkers[i]).attr('data-text') == tag) {
                         if (i == 0) {
+                            return firstSectionHeight;
+                        }
+                        return firstSectionHeight - additional;
+                    } else {
+                        firstSectionHeight += $(allMarkers[i]).closest('.content-side').height()
+                    }
+                }
+            }
+            function scrollToElementMobile(tag, additional, mainDelta) {
+                if (tag == 'top') {
+                    $($('.nav-tems li')[1]).addClass('selected');
+                    return 0;
+                }
+                if (tag == 'bottom') {
+                    $($('.nav-tems li')[$('.nav-tems li').length - 2]).addClass('selected');
+                    return $(document).height() - $(window).height();
+                }
+                var allMarkers = $('.marker');
+                var firstSectionHeight = $($('.first-section')[0]).height();
+                for (var i = 0; i < allMarkers.length; i++) {
+                    if ($(allMarkers[i]).attr('data-text') == tag) {
+                        if (i == 0) {
                             return firstSectionHeight - additional;
                         }
-                        return firstSectionHeight - $('.nav-tems').height() - additional;
+                        return firstSectionHeight - additional;
                     } else {
                         firstSectionHeight += $(allMarkers[i]).closest('.content-side').height()
                     }
@@ -553,18 +576,26 @@
                     $(e.target).addClass('selected');
                 }
 
-                var height = scrollToElement($(e.target).attr('data-text'), $('.mobile-nav').height() + 10);
+                var height = scrollToElementMobile($(e.target).attr('data-text'), $('.mobile-nav').height() + 10);
                 closeNav();
 
                 $('body,html').animate({ scrollTop: height }, 1500);
 
             });
+            $(document).on('wheel', '', function (e) {
+                if (!isExecuted && e.originalEvent.wheelDelta / 120 < 0 && Math.abs($('.first-section')[0].getBoundingClientRect().top) < $($('.first-section')[0]).height()) {
+                    $('body,html').animate({ scrollTop: $($('.first-section')[0]).height() }, 500, function () {
+                        isExecuted = false;
+                    });
+                    isExecuted = true;
+                }
+            })
         });
 
 
         $(window).scroll(function () {
 
-            var value = $('.marker')[0].getBoundingClientRect().top - -$('.navigation').height();
+            var value = $('.marker')[0].getBoundingClientRect().top - $('.navigation').height();
             if (value < 0) {
                 $('.navigation').css({
                     position: "fixed",
@@ -588,7 +619,7 @@
 
                 var currentBlockHeight = $($('.marker')[i]).closest('.content-side').height();
 
-                var toBottom = previouseScrollPosition - $('.first-section')[0].getBoundingClientRect().top > 0;
+                toBottom = previouseScrollPosition - $('.first-section')[0].getBoundingClientRect().top > 0;
                 previouseScrollPosition = $('.first-section')[0].getBoundingClientRect().top;
 
                 var windowFillingCurrentBlock = currentDistance + currentBlockHeight;
@@ -704,6 +735,8 @@
 
 
             }
+
+           
         })
 
 

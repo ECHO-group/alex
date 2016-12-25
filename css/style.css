@@ -2,8 +2,7 @@
   width: 100%;
   background-image: url(../img/first-section-bg.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 839px; }
+  background-repeat: no-repeat; }
 
 @media screen and (min-width: 1200px) {
   .first-section--content-layer-wrapper {
@@ -233,7 +232,7 @@
         width: 30px;
         height: 30px;
         position: absolute;
-        margin: 50px; }
+        margin: 20px; }
       .first-section--content-layer-wrapper .first-section--content-layer .corner-top {
         border-top: 2px solid #d9d9c2;
         top: 0; }
@@ -260,7 +259,7 @@
           text-align: center;
           font-weight: 100;
           margin-top: 6px;
-          font-size: 44px;
+          font-size: 34px;
           position: relative;
           font-family: 'Archivo Narrow';
           display: table;
@@ -268,7 +267,7 @@
         .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-owner h2 {
           color: #fff;
           text-align: center;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 100;
           margin-top: 6px; }
       .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-statistic {
@@ -279,27 +278,28 @@
           flex-flow: row wrap;
           justify-content: space-around; }
           .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-statistic .first-section--content-statistic-container .first-section--content-statistic-item {
-            min-width: 120px;
-            width: 60%;
-            margin: 20px auto;
+            max-width: 120px;
+            width: 33%;
+            margin: 5px auto;
             text-align: center;
             background: rgba(103, 103, 120, 0.38);
-            padding: 14px;
+            padding: 14px 17px;
             position: relative; }
             .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-statistic .first-section--content-statistic-container .first-section--content-statistic-item span {
               color: #e9cb31;
               display: block;
-              font-size: 24px;
+              font-size: 17px;
               font-weight: 800; }
             .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-statistic .first-section--content-statistic-container .first-section--content-statistic-item strong {
               color: #fff;
               display: block;
-              font-weight: 100; }
+              font-weight: 100;
+              font-size: 13px; }
             .first-section--content-layer-wrapper .first-section--content-layer .first-section--content-statistic .first-section--content-statistic-container .first-section--content-statistic-item .corner {
               width: 20px;
               height: 20px;
               position: absolute;
-              margin: 10px; } }
+              margin: 6px; } }
 @media screen and (min-width: 1200px) {
   .info-section {
     display: block; }
