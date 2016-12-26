@@ -583,7 +583,11 @@
 
             });
             $(document).on('wheel', '', function (e) {
+                if (isExecuted) {
+                    e.preventDefault();
+                }
                 if (!isExecuted && e.originalEvent.wheelDelta / 120 < 0 && Math.abs($('.first-section')[0].getBoundingClientRect().top) < $($('.first-section')[0]).height()) {
+                    e.preventDefault();
                     $('body,html').animate({ scrollTop: $($('.first-section')[0]).height() }, 500, function () {
                         isExecuted = false;
                     });
